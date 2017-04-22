@@ -2,6 +2,7 @@ package com.example.usuario.creacionsqlitte;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -83,7 +84,27 @@ public class DateBaseManager {
 
     }
 
+    //debulve todo los reguistro de la base de datos
+    public Cursor cargarCursosrContactod (){
 
+        String [] columnas = new String [] {CN_ID,CN_NAME,CN_PHONE};
+
+
+
+      return   db.query(TABLE_NAME,columnas,null,null,null,null,null);
+    }
+
+    public Cursor buscarContacto (String nombre){
+
+        String [] columnas = new String [] {CN_ID,CN_NAME,CN_PHONE};
+
+        try{
+            Thread.sleep(7000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        return   db.query(TABLE_NAME,columnas,CN_NAME + "=?",new String [] {nombre},null,null,null);
+    }
 
 
 
